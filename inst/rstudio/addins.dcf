@@ -1,0 +1,19 @@
+Name: Preset Development Packages
+Description: Prepare the workflow for development with the packages I use most
+Binding: preset_dev
+Interactive: false
+
+Name: Loading Development Packages
+Description: Load all packages defined in DESCRIPTION and packages for development
+Binding: load_dev
+Interactive: false
+
+Name: Checking Development Package
+Description: Checking the package replacing NAMESPACE and MAN folder
+Binding: check_dev
+Interactive: false
+
+Name: Building Development Package
+Description: Building tar file
+Binding: build_dev
+Interactive: false
