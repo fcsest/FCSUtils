@@ -1,5 +1,40 @@
+dd <- function(x, l = 60) {
+  if (nchar(x) <= (l - 10)) {
+    ((l - nchar(x) - 2) / 2) %>%
+      {c("####",
+         rep(" ",
+             floor(.) - 3),
+         x,
+         rep(" ",
+             ceiling(.) - 3),
+         "####")} %>%
+      paste(collapse = "")
+  } else if (nchar(x) > (l - 10)) {
+    s1 <- strsplit(x, "\\s") %>% unlist()
+
+    # si s1 trop long on découpe arbitraitement au milieu
+    if (length(s1) == 1) {
+      coupe <- nchar(s1) / 2
+      s1 <- c(substr(s1,
+                     1,
+                     coupe),
+              substr(s1,
+                     1 + coupe,
+                     nchar(s1)))
+    }
+
+    c(Recall(paste(s1[1:floor(length(s1)/2)],
+                   collapse = " "),
+             l = l),
+      Recall(paste(s1[(1+floor(length(s1)/2)):length(s1)],
+                   collapse = " "),
+             l = l))
+  }
+}
+
+
+
 #' @importFrom clipr write_clip
-#' @importFrom littleboxes dd
 boxes <- function(texto, level = 1, length = 100) {
   if (level == 1) {
     c("#", rep("=", length - 2), "#\n",
