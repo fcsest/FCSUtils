@@ -1,3 +1,4 @@
+#' @export
 #' @importFrom pacman p_load
 #' @importFrom purrr map
 #' @importFrom usethis use_package
@@ -31,6 +32,7 @@ preset_dev <- function(){
     map(use_package)
 }
 
+#' @export
 #' @importFrom here here
 #' @importFrom purrr discard
 #' @importFrom stringr str_remove str_squish
@@ -51,6 +53,7 @@ load_dev <- function(){
     p_load()
 }
 
+#' @export
 #' @importFrom here here
 #' @importFrom usethis use_git_config edit_r_environ
 first_dev <- function(name, email, preset = FALSE){
@@ -71,6 +74,7 @@ first_dev <- function(name, email, preset = FALSE){
   edit_r_environ(scope = "user")
 }
 
+#' @export
 #' @importFrom devtools load_all
 run_dev <- function(){
   # Clear workspace
@@ -80,6 +84,7 @@ run_dev <- function(){
   load_all()
 }
 
+#' @export
 #' @importFrom stringr str_detect
 uses_dtplyr <- function(imports){
   if (any(str_detect(imports, "data.table")) &
@@ -95,6 +100,7 @@ uses_dtplyr <- function(imports){
   }
 }
 
+#' @export
 #' @importFrom here here
 #' @importFrom devtools document check
 #' @importFrom purrr discard detect_index
@@ -138,6 +144,7 @@ check_dev <- function(){
   }
 }
 
+#' @export
 #' @importFrom devtools build
 build_dev <- function(){
   # Building a compressed file of package

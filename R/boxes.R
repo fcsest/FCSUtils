@@ -1,3 +1,4 @@
+#' @export
 dd <- function(x, l = 60) {
   if (nchar(x) <= (l - 10)) {
     ((l - nchar(x) - 2) / 2) %>%
@@ -32,8 +33,7 @@ dd <- function(x, l = 60) {
   }
 }
 
-
-
+#' @export
 #' @importFrom clipr write_clip
 boxes <- function(texto, level = 1, length = 100) {
   if (level == 1) {
@@ -71,6 +71,7 @@ boxes <- function(texto, level = 1, length = 100) {
   }
 }
 
+#' @export
 #' @importFrom clipr write_clip
 hrule <- function(length = 100, clip = FALSE) {
   paste(c("#",
@@ -85,6 +86,7 @@ hrule <- function(length = 100, clip = FALSE) {
     }
 }
 
+#' @export
 #' @importFrom clipr write_clip
 hhrule <- function(length = 100, clip = FALSE) {
   paste(c("#",

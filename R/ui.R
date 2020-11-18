@@ -1,9 +1,11 @@
+#' @export
 #' @importFrom cli combine_ansi_styles
 ui_color_start <- function(...){
   combine_ansi_styles("#10aff2",
                       "bold")(...)
 }
 
+#' @export
 #' @importFrom cli boxx rule
 ui_start <- function(function_name, title, description, length = 100){
   cat("\n\n\n",
@@ -30,6 +32,7 @@ ui_start <- function(function_name, title, description, length = 100){
       "\n\n")
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles
 ui_step <- function(...){
   cat()
@@ -41,6 +44,7 @@ ui_step <- function(...){
       "\n")
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles symbol
 ui_warning <- function(...){
   cat("\n\n")
@@ -51,6 +55,7 @@ ui_warning <- function(...){
                                   "\n\n"))
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles symbol
 ui_info <- function(...){
   cat("\n\n")
@@ -61,6 +66,7 @@ ui_info <- function(...){
       "\n\n")
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles
 ui_error <- function(...){
   cat("\n\n")
@@ -71,6 +77,7 @@ ui_error <- function(...){
                                   "\n\n"))
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles
 ui_error_list <- function(head, ...){
   cat("\n\n")
@@ -81,6 +88,7 @@ ui_error_list <- function(head, ...){
       ...)
 }
 
+#' @export
 #' @importFrom cli cat_bullet
 ui_error_item <- function(...){
   combine_ansi_styles("red",
@@ -88,6 +96,7 @@ ui_error_item <- function(...){
                               ...)
 }
 
+#' @export
 #' @importFrom cli rule combine_ansi_styles
 ui_end <- function(function_name, length = 100) {
   cat("\n\n")
@@ -99,6 +108,7 @@ ui_end <- function(function_name, length = 100) {
       "\n\n")
 }
 
+#' @export
 #' @importFrom cli combine_ansi_styles style_bold symbol
 ui_success <- function(...){
   cat("\n\n")
