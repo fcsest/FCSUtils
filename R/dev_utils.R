@@ -15,7 +15,7 @@ preset_dev <- function(){
     "dplyr",
     "dtplyr",
     "data.table") %>%
-    p_load()
+    {p_load(char = .)}
 
   c("devtools",
     "here",
@@ -49,7 +49,7 @@ load_dev <- function(){
                       "here"),
            after = 0) %>%
     unique() %>%
-    p_load()
+    {p_load(char = .)}
 }
 
 #' @export
