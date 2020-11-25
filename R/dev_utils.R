@@ -45,7 +45,6 @@ load_dev <- function(){
     str_remove(",") %>%
     str_squish() %>%
     append(values = c("devtools",
-                      "pacman",
                       "usethis",
                       "here"),
            after = 0) %>%
