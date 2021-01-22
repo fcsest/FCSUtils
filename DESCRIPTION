@@ -6,14 +6,13 @@ Authors@R:
            family = "Souza",
            role = c("aut", "cre"),
            email = "fcs.est@gmail.com")
-Description: A bundle of my functions to handle with package development.
+Description: A bundle of my functions to handle with package
+    development.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
 URL: https://github.com/fcsest/FCSUtils
 BugReports: https://github.com/fcsest/FCSUtils/issues
+Depends: 
+    R (>= 2.10)
 Imports: 
     cli,
     clipr,
@@ -22,7 +21,11 @@ Imports:
     magrittr,
     pacman,
     purrr,
+    Rfiglet,
     stringr,
-    usethis
-Depends: 
-    R (>= 2.10)
+    usethis,
+    utils
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

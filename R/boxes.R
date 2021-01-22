@@ -100,3 +100,27 @@ hhrule <- function(length = 100, clip = FALSE) {
       {.}
     }
 }
+
+#' @export
+#' @importFrom cli boxx combine_ansi_styles
+#' @importFrom Rfiglet figlet
+title_ascii <- function(text = "Exemplo",
+                        text_font = "standard",
+                        text_color = NULL,
+                        text_compact = TRUE,
+                        bold_style = TRUE,
+                        box_style = "single",
+                        border_color = NULL,
+                        bg_color = NULL,
+                        align = "left") {
+  figlet(message = text,
+         font = text_font,
+         smush = text_compact) %>%
+    combine_ansi_styles(text_color)(.) %>%
+    boxx(label = .,
+         col = ifelse(bold_style, "bold", NULL),
+         border_style = box_style,
+         float = align,
+         background_col = bg_color,
+         border_col = border_color)
+}
