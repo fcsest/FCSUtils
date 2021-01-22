@@ -102,6 +102,21 @@ hhrule <- function(length = 100, clip = FALSE) {
 }
 
 #' @export
+#' @importFrom clipr write_clip
+rulez <- function(length = 100, clip = FALSE) {
+  paste(c("#",
+          rep("-",
+              round((length * 3)/5) - 2),
+          "#"),
+        collapse = "") %>%
+    {if (clip)
+    {write_clip(.)}
+      else if (!clip)
+      {.}
+    }
+}
+
+#' @export
 #' @importFrom cli boxx combine_ansi_styles
 #' @importFrom Rfiglet figlet
 title_ascii <- function(text = "Exemplo",
