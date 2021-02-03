@@ -73,9 +73,9 @@ boxes <- function(texto, level = 1, length = 100) {
 
 #' @export
 #' @importFrom clipr write_clip
-hrule <- function(length = 100, clip = FALSE) {
+full_srule <- function(length = 100, clip = FALSE) {
   paste(c("#",
-          rep("=",
+          rep("-",
               length - 2),
           "#"),
         collapse = "") %>%
@@ -88,9 +88,24 @@ hrule <- function(length = 100, clip = FALSE) {
 
 #' @export
 #' @importFrom clipr write_clip
-hhrule <- function(length = 100, clip = FALSE) {
+full_drule <- function(length = 100, clip = FALSE) {
   paste(c("#",
           rep("=",
+              length - 2),
+          "#"),
+        collapse = "") %>%
+    {if (clip)
+    {write_clip(.)}
+      else if (!clip)
+      {.}
+    }
+}
+
+#' @export
+#' @importFrom clipr write_clip
+half_srule <- function(length = 100, clip = FALSE) {
+  paste(c("#",
+          rep("-",
               round((length * 3)/5) - 2),
           "#"),
         collapse = "") %>%
@@ -103,9 +118,9 @@ hhrule <- function(length = 100, clip = FALSE) {
 
 #' @export
 #' @importFrom clipr write_clip
-rulez <- function(length = 100, clip = FALSE) {
+half_drule <- function(length = 100, clip = FALSE) {
   paste(c("#",
-          rep("-",
+          rep("=",
               round((length * 3)/5) - 2),
           "#"),
         collapse = "") %>%
