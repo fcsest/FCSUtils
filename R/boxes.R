@@ -146,7 +146,13 @@ title_ascii <- function(text = "Exemplo",
   figlet(message = text,
          font = text_font,
          smush = text_compact) %>%
-    combine_ansi_styles(text_color)(.) %>%
+    {if (is.null(text_color)) {
+      .
+     }
+     else {
+      combine_ansi_styles(text_color)(.)
+     }
+    }  %>%
     boxx(label = .,
          col = ifelse(bold_style, "bold", NULL),
          border_style = box_style,

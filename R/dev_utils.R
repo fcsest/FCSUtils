@@ -41,7 +41,7 @@ load_dev <- function(){
   here("DESCRIPTION") %>%
     readLines() %>%
     discard(str_detect,
-            pattern = "(\\:)|(\\=)") %>%
+            pattern = "(\\:)|(\\=)|(pacman)") %>%
     str_remove(",") %>%
     str_squish() %>%
     append(values = c("devtools",
