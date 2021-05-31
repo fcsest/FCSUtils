@@ -76,8 +76,28 @@ install_flex <- function(pkgs, force = T){
 #' @export
 #' @importFrom purrr keep
 check_installed <- function(pkgs) {
-  list("installed" = pkgs |> keep(~.x %in% installed.packages()),
-       "non_installed" = pkgs |> keep(~.x %not_in% installed.packages()))
+  inst_pkgs <- pkgs |>
+    keep(~.x %in% installed.packages()) %>%
+    {if (length(.) >= 1) {
+       .
+     }
+     else {
+       0
+     }
+    }
+
+  non_inst_pkgs <- pkgs |>
+    keep(~.x %not_in% installed.packages()) %>%
+    {if (length(.) >= 1) {
+       .
+     }
+     else {
+       0
+     }
+    }
+
+  list("installed" = inst_pkgs,
+       "non_installed" = non_inst_pkgs)
 }
 
 #' @importFrom remotes install_cran
