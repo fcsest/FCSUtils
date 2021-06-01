@@ -8,6 +8,11 @@ Description: Load all packages defined in DESCRIPTION and packages for developme
 Binding: load_dev
 Interactive: false
 
+Name: Run Development Package
+Description: Run the package developmented with load_all
+Binding: run_dev
+Interactive: false
+
 Name: Checking Development Package
 Description: Checking the package replacing NAMESPACE and MAN folder
 Binding: check_dev
