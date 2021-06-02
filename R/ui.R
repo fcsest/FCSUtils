@@ -8,11 +8,11 @@ startup_message <- function() {
   Sys.time() |>
     format("%H") |>
     as.numeric() |>
-    when(. %in% 5:12 ~ paste0("\nBom dia ",
+    when(. %in% 5:11 ~ paste0("\nBom dia ",
                               ji("sunrise_over_mountains")),
          . %in% 12:18 ~ paste0("\nBoa tarde ",
                                ji("sun_behind_cloud")),
-         . %in% 18:23 ~ paste0("\nBoa noite ",
+         . %in% 19:23 ~ paste0("\nBoa noite ",
                                ji("crescent_moon")),
          ~ paste0("\nBoa madrugada ",
                   ji("new_moon"))) |>
