@@ -1,4 +1,34 @@
 #' @export
+#' @importFrom purrr when
+#' @importFrom emo ji
+startup_message <- function() {
+  FCSUtils::full_drule() |>
+    cat()
+
+  Sys.time() |>
+    format("%H") |>
+    as.numeric() |>
+    when(. %in% 5:12 ~ paste0("\nBom dia ",
+                              ji("sunrise_over_mountains")),
+         . %in% 12:18 ~ paste0("\nBoa tarde ",
+                               ji("sun_behind_cloud")),
+         . %in% 18:23 ~ paste0("\nBoa noite ",
+                               ji("crescent_moon")),
+         ~ paste0("\nBoa madrugada ",
+                  ji("new_moon"))) |>
+    paste0("\nBem vindo ao R das ruas ", ji("sunglasses"),
+           "\nHoje \u00e9 ",
+           format(Sys.time(),
+                  "%A-feira, dia %d de %B de %Y e s\u00e3o %H horas e %M minutos "),
+           ji("poop")) |>
+    cat("\n")
+
+  FCSUtils::full_drule() |>
+    cat()
+}
+
+
+#' @export
 #' @importFrom cli combine_ansi_styles
 ui_color_start <- function(...){
   combine_ansi_styles("#10aff2",
