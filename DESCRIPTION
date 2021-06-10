@@ -25,8 +25,10 @@ Imports:
     Rfiglet (>= 1.0.0),
     stringr,
     usethis,
-    utils
-Remotes:  
+    utils,
+    knitr,
+    rstudioapi
+Remotes: 
     github::wrathematics/Rfiglet,
     hadley/emo
 Encoding: UTF-8
