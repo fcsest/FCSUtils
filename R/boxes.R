@@ -144,15 +144,17 @@ title_ascii <- function(text = "Exemplo",
                         bg_color = NULL,
                         align = "left") {
 
-  if (length(text) == 1) {
-    figlet(message = text,
+  {if (length(text) == 1) {
+     figlet(message = text,
+            font = text_font,
+            smush = text_compact)
+   }
+   else {
+     text %>%
+       map(figlet,
            font = text_font,
            smush = text_compact)
-  } else {
-    text %>%
-      map(figlet,
-          font = text_font,
-          smush = text_compact)
+   }
   } %>%
     unlist() %>%
     {if (is.null(text_color)) {
