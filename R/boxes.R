@@ -143,9 +143,18 @@ title_ascii <- function(text = "Exemplo",
                         border_color = NULL,
                         bg_color = NULL,
                         align = "left") {
-  figlet(message = text,
-         font = text_font,
-         smush = text_compact) %>%
+
+  if (length(text) == 1) {
+    figlet(message = text,
+           font = text_font,
+           smush = text_compact)
+  } else {
+    text %>%
+      map(figlet,
+          font = text_font,
+          smush = text_compact)
+  } %>%
+    unlist() %>%
     {if (is.null(text_color)) {
       .
      }
@@ -157,6 +166,8 @@ title_ascii <- function(text = "Exemplo",
          col = ifelse(bold_style, "bold", NULL),
          border_style = box_style,
          float = align,
+         align = "center",
          background_col = bg_color,
          border_col = border_color)
 }
+
