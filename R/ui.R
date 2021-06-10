@@ -2,7 +2,7 @@
 #' @importFrom purrr when
 #' @importFrom emo ji
 startup_message <- function() {
-  cat("\n\n")
+  cat("\n")
   FCSUtils::full_drule() |>
     cat()
 
