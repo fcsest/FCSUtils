@@ -3,7 +3,7 @@
 #' @importFrom emo ji
 startup_message <- function() {
   cat("\n")
-  FCSUtils::full_drule() |>
+  full_drule() |>
     cat()
 
   Sys.time() |>
@@ -24,10 +24,9 @@ startup_message <- function() {
            ji("poop")) |>
     cat("\n")
 
-  FCSUtils::full_drule() |>
+  full_drule() |>
     cat("\n\n")
 }
-
 
 #' @export
 #' @importFrom cli combine_ansi_styles
@@ -64,70 +63,6 @@ ui_start <- function(function_name, title, description, length = 100){
 }
 
 #' @export
-#' @importFrom cli combine_ansi_styles
-ui_step <- function(...){
-  cat()
-  cat("\n",
-      combine_ansi_styles("#005387",
-                          "bold")("=>",
-                                  " ",
-                                  ...),
-      "\n")
-}
-
-#' @export
-#' @importFrom cli combine_ansi_styles symbol
-ui_warning <- function(...){
-  cat("\n\n")
-  cat(combine_ansi_styles("#9897c7",
-                          "bold")(symbol$warning,
-                                  " ",
-                                  ...,
-                                  "\n\n"))
-}
-
-#' @export
-#' @importFrom cli combine_ansi_styles symbol
-ui_info <- function(...){
-  cat("\n\n")
-  cat(combine_ansi_styles("#4A80A3",
-                          "bold")(symbol$info,
-                                  " ",
-                                  ...),
-      "\n\n")
-}
-
-#' @export
-#' @importFrom cli combine_ansi_styles
-ui_error <- function(...){
-  cat("\n\n")
-  cat(combine_ansi_styles("red",
-                          "bold")(symbol$cross,
-                                  " ",
-                                  ...,
-                                  "\n\n"))
-}
-
-#' @export
-#' @importFrom cli combine_ansi_styles
-ui_error_list <- function(head, ...){
-  cat("\n\n")
-  cat(combine_ansi_styles("red",
-                          "bold")(symbol$cross,
-                                  " ",
-                                  head),
-      ...)
-}
-
-#' @export
-#' @importFrom cli cat_bullet
-ui_error_item <- function(...){
-  combine_ansi_styles("red",
-                      "bold")("\n -> ",
-                              ...)
-}
-
-#' @export
 #' @importFrom cli rule combine_ansi_styles
 ui_end <- function(function_name, length = 100) {
   cat("\n\n")
@@ -140,11 +75,211 @@ ui_end <- function(function_name, length = 100) {
 }
 
 #' @export
-#' @importFrom cli combine_ansi_styles style_bold symbol
+#' @importFrom cli combine_ansi_styles
+ui_color_error <- function(...){
+  combine_ansi_styles("red",
+                      "bold")(...)
+}
+
+#' @importFrom cli cat_bullet
+ui_error_item <- function(...){
+  ui_color_error("\n => ",
+                 ...)
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_error_list <- function(..., header = NULL){
+  if (not_null(header)) {
+    cat("\n",
+        ui_color_error("\n",
+                       symbol$cross,
+                       " ",
+                       header),
+        ui_error_item(...),
+        "\n\n")
+  } else {
+    cat("\n",
+        ui_error_item(...),
+        "\n\n")
+  }
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_error <- function(...){
+  cat("\n",
+      ui_color_error("\n",
+                     symbol$cross,
+                     " ",
+                     ...),
+      "\n\n")
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles
+ui_color_info <- function(...){
+  combine_ansi_styles("#4A80A3",
+                      "bold")(...)
+}
+
+#' @importFrom cli cat_bullet
+ui_info_item <- function(...){
+  ui_color_info("\n -> ",
+                ...)
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_info_list <- function(..., header = NULL){
+  if (not_null(header)) {
+    cat("\n",
+        ui_color_info("\n",
+                      symbol$info,
+                      " ",
+                      header),
+        ui_info_item(...),
+        "\n\n")
+  } else {
+    cat("\n",
+        ui_info_item(...),
+        "\n\n")
+  }
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_info <- function(...){
+  cat("\n",
+      ui_color_info("\n",
+                    symbol$info,
+                    " ",
+                    ...),
+      "\n\n")
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles
+ui_color_warning <- function(...){
+  combine_ansi_styles("#9897c7",
+                      "bold")(...)
+}
+
+#' @importFrom cli cat_bullet
+ui_warning_item <- function(...){
+  ui_color_warning("\n -> ",
+                   ...)
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_warning_list <- function(..., header = NULL){
+  if (not_null(header)) {
+    cat("\n",
+        ui_color_warning("\n",
+                         symbol$warning,
+                         " ",
+                         header),
+        ui_warning_item(...),
+        "\n\n")
+  } else {
+    cat("\n",
+        ui_warning_item(...),
+        "\n\n")
+  }
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_warning <- function(...){
+  cat("\n",
+      ui_color_warning("\n",
+                       symbol$warning,
+                       " ",
+                       ...),
+      "\n\n")
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles
+ui_color_step <- function(...){
+  combine_ansi_styles("#005387",
+                      "bold")(...)
+}
+
+#' @importFrom cli cat_bullet
+ui_step_item <- function(...){
+  ui_color_step("\n -> ",
+                ...)
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_step_list <- function(..., header = NULL){
+  if (not_null(header)) {
+    cat("\n",
+        ui_color_step("\n",
+                      symbol$arrow_right,
+                      " ",
+                      header),
+        ui_step_item(...),
+        "\n\n")
+  } else {
+    cat("\n",
+        ui_step_item(...),
+        "\n\n")
+  }
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_step <- function(...){
+  cat("\n",
+      ui_color_step("\n",
+                    symbol$arrow_right,
+                    " ",
+                    ...),
+      "\n\n")
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles
+ui_color_success <- function(...){
+  combine_ansi_styles("#09e2c5",
+                      "bold")(...)
+}
+
+#' @importFrom cli cat_bullet
+ui_success_item <- function(...){
+  ui_color_success("\n -> ",
+                   ...)
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
+ui_success_list <- function(..., header = NULL){
+  if (not_null(header)) {
+    cat("\n",
+        ui_color_success("\n",
+                         symbol$tick,
+                         " ",
+                         header),
+        ui_success_item(...),
+        "\n\n")
+  } else {
+    cat("\n",
+        ui_success_item(...),
+        "\n\n")
+  }
+}
+
+#' @export
+#' @importFrom cli combine_ansi_styles symbol
 ui_success <- function(...){
-  cat("\n\n")
-  cat(combine_ansi_styles("#09e2c5")(style_bold(symbol$tick),
-                                     " ",
-                                     ...,
-                                     "\n\n"))
+  cat("\n",
+      ui_color_success("\n",
+                       symbol$tick,
+                       " ",
+                       ...),
+      "\n\n")
 }
