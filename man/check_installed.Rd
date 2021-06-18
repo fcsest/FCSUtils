@@ -16,11 +16,13 @@ A list with installed packages and non installed packages...
 Check if package has installed or not.
 }
 \examples{
+\dontrun{
 c("fcuk",
   "attachment",
   "here",
   "highcharter",
   "tidyverse") |>
   check_installed()
+}
 
 }
