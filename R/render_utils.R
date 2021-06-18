@@ -31,7 +31,7 @@
 #' @rdname render_toc
 #' @export
 #' @importFrom knitr asis_output
-#' @importFrom purrr when
+#' @importFrom purrr chuck when
 #' @importFrom rstudioapi getSourceEditorContext
 render_toc <- function(filename = NULL,
                        toc_header_name = "Table of Contents",
@@ -39,7 +39,7 @@ render_toc <- function(filename = NULL,
                        toc_depth = 3) {
   if (is.null(filename)) {
     filename <- getSourceEditorContext() |>
-      purrr::chuck("path")
+      chuck("path")
   }
   x <- readLines(filename, warn = FALSE) |>
     paste(collapse = "\n") |>

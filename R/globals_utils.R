@@ -5,7 +5,9 @@
 #---------------------------------------------#
 # Setting global variables of other functions #
 #---------------------------------------------#
-globalVariables(c("."))
+globalVariables(c(".",
+                  "pkg_call",
+                  "pkg_name"))
 
 #' @importFrom magrittr %>%
 NULL
