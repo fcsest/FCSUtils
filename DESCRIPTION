@@ -27,10 +27,11 @@ Imports:
     usethis,
     utils,
     knitr,
-    rstudioapi
+    rstudioapi,
+    dplyr
 Remotes: 
     github::wrathematics/Rfiglet,
-    hadley/emo
+    github::hadley/emo
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
