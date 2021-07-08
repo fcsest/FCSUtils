@@ -51,7 +51,7 @@ install_flex <- function(pkgs, force = T) {
 
   pkgs |>
     map_chr(when,
-            str_detect(., "fcsest") ~ str_extract(., "(?<=/).*"),
+            str_detect(., "/") ~ str_extract(., "(?<=/).*"),
             ~ paste0(.)) |>
     check_installed()
 }
