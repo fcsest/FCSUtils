@@ -50,9 +50,9 @@ install_flex <- function(pkgs, force = T) {
   ui_end("FCSUtils::install_flex")
 
   pkgs |>
-    map_chr(when,
-            str_detect(., "/") ~ str_extract(., "(?<=/).*"),
-            ~ paste0(.)) |>
+    map_chr(~when(.x,
+                  str_detect(., "/") ~ str_extract(., "(?<=/).*"),
+                  ~ paste0(.))) |>
     check_installed()
 }
 
